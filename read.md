@@ -328,3 +328,55 @@ git commit -m "first commit"
 git branch -M main
 git remote add origin https://github.com/KSP-75/POC_redis.git
 git push -u origin main -->
+
+
+
+Common Patterns and Their Use Cases
+Pattern	Description
+__keyspace@<db>__:*	Monitors all operations performed on keys in the specified database.
+__keyspace@<db>__:myKey	Monitors operations on a specific key (myKey) in the specified database.
+__keyevent@<db>__:*	Monitors all key events in the specified database (e.g., expired, evicted, set, del, etc.).
+__keyevent@<db>__:expired	Monitors only expired events for all keys in the specified database.
+__keyevent@<db>__:evicted	Monitors only evicted keys in the specified database.
+__keyevent@<db>__:set	Monitors only set operations for all keys in the specified database.
+__keyevent@<db>__:del	Monitors only del operations for all keys in the specified database.
+__keyevent@<db>__:rename_from	Monitors when keys are renamed (original key) in the specified database.
+__keyevent@<db>__:rename_to	Monitors when keys are renamed (new key) in the specified database.
+
+
+
+Key Differences Between Keyspace and Key Event Patterns
+Feature	Keyspace Notifications	Key Event Notifications
+Pattern	__keyspace@<db>__:*	__keyevent@<db>__:*
+Focus	Monitors all operations on keys	Monitors specific events for keys
+Event Data	Reports operation type (set, del, etc.)	Reports result (expired, evicted)
+Key Name	Provides the name of the key	Does not always include key name
+Use Case	Broad monitoring of key operations	Targeted tracking of key outcomes
+
+
+
+
+
+
+
+
+
+
+
+
+---timeseries se expired key ka data kaise laarhe=kt,
+---edge case for key copy, when expire and insert same at the same time
+
+
+
+
+
+
+RabbitMQ is an open-source message broker software that's used for: 
+Processing reliable background jobs
+High throughput
+Intercommunication and integration within applications
+Complex routing
+Working with rapid request-response web servers
+Sharing loads between workers that have high load
+Long-running tasks such as PDF conversion or image scaling

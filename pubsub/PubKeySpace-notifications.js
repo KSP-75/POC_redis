@@ -20,10 +20,10 @@ async function triggerKeyspaceEvents() {
     console.log('Set expiringKey with a TTL of 5 seconds.');
 
     // Trigger key event: Evicted
-    // console.log('Trying to trigger eviction (requires Redis maxmemory policy)...');
-    // for (let i = 0; i < 10 i++) {
-    //     await client.set(`tempKey${i}`, 'value'); // Create many keys to exceed memory
-    // }
+    console.log('Trying to trigger eviction (requires Redis maxmemory policy)...');
+    for (let i = 0; i < 10000; i++) {
+        await client.set(`tempKey${i}`, 'value'); // Create many keys to exceed memory
+    }
     // console.log('Eviction keys created. Eviction will only occur if maxmemory is configured.');
 
     // Trigger key event: Rename
